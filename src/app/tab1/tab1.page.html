@@ -1,17 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+    Usuários
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content>
+ 
+<ion-item *ngFor="let user of userUnitario">
+  <IonAvatar slot="start">
+    <img [src]="user.avatar"/>
+  </IonAvatar>
+  <IonLabel>
+    <div>
+      <h1>{{user.first_name}} {{user.last_name}}</h1>
+      <a [href]="'mailto:' + user.mail">{{user.email}}</a>
+    </div>
+     </IonLabel>
+</ion-item>
+<IonGrid>
+  <IonRow>
+    <IonCol>ion-col</IonCol>
+    <IonCol>ion-col</IonCol>
+    <IonCol>ion-col</IonCol>
+    <IonCol>ion-col</IonCol>
+  </IonRow>
+</ion-item>
+  
 </ion-content>
