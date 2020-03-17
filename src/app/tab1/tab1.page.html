@@ -1,31 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-    Usuários
+      Usuários
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- 
-<ion-item *ngFor="let user of userUnitario">
-  <IonAvatar slot="start">
-    <img [src]="user.avatar"/>
-  </IonAvatar>
-  <IonLabel>
-    <div>
-      <h1>{{user.first_name}} {{user.last_name}}</h1>
-      <a [href]="'mailto:' + user.mail">{{user.email}}</a>
-    </div>
-     </IonLabel>
-</ion-item>
-<IonGrid>
-  <IonRow>
-    <IonCol>ion-col</IonCol>
-    <IonCol>ion-col</IonCol>
-    <IonCol>ion-col</IonCol>
-    <IonCol>ion-col</IonCol>
-  </IonRow>
-</ion-item>
+
+  <ion-item *ngFor="let user of listaUsuarios">
+    <ion-avatar slot="start">
+      <img [src]="user.avatar" />
+    </ion-avatar>
+    <ion-label>
+      <div>
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+        <a [href]="'mailto:' + user.mail">{{user.email}}</a>
+      </div>
+    </ion-label>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        
+        <ion-button expand="block" (click)="buscarUsuarios(page - 1)" *ngIf="page > 1">
+           <ion-icon slot="icon-only" name="arrow-undo-outline"></ion-icon> 
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        {{page}} de {{totalPaginas}}
+      </ion-col>
+
+      <ion-col>
+        <ion-button expand="block" (click)="buscarUsuarios(page + 1)" *ngIf="page < totalPaginas">
+           <ion-icon slot="icon-only" expand="block" name="arrow-redo-outline"></ion-icon> 
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
   
+
+
 </ion-content>
